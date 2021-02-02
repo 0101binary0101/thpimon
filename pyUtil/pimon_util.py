@@ -20,5 +20,18 @@ def main(argv):
     print('Board Serial:\t\t{0:#0{1}x}'.format(pimon.getBoardSerial(), 16))
     print('Temp:\t\t\t{} (deg. C)'.format(pimon.getTemp()))
 
+    print('{{ "FirmwareRev": "{}", "temp": {} ,"BoardModel": {} , "BoardRevision": "{}", "BoardMAC": "{}" }}'
+	.format(
+		hex(pimon.getFWRev())
+		, pimon.getTemp()
+		, pimon.getBoardModel()
+		, hex(pimon.getBoardRev())
+		, boardMACStr
+	)
+	)
+
+
+
+
 if __name__ == '__main__':
     main(sys.argv)
