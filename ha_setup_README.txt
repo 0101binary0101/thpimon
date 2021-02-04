@@ -1,4 +1,10 @@
 
+ ***** NOTE All the credit of the VIB file etc goes to 'thebel1' and his original branch  https://github.com/thebel1/thpimon
+
+
+ I've just added bits for HomeAssistant for JSON reading.
+
+ So here goes.......
 
  1) create your rsa public/private key 
 
@@ -14,7 +20,7 @@
  
  ssh -i /usr/share/hassio/share/local-secrets/id_rsa root@<target-esxi>
 
- 2) Get the esxi temp to be read 
+ 2) Install the driver and Get the esxi temp to be read 
 
    Look at and ha_push2esxi.sh script... to push required VIB file and a python file and library over to your ESXI
 
