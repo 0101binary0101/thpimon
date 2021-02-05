@@ -12,9 +12,9 @@
  
  mkdir /usr/share/hassio/share/local-secrets/
  chmod 700 /usr/share/hassio/share/local-secrets/
- ssh-keygen -f /usr/share/hassio/share/local-secrets/
- scp /usr/share/hassio/share/local-secrets/id_rsa.pub <target-esxi>:/etc/ssh/root-keys/
- and then appened to your /etc/ssh/root-keys/authorized_keys
+ ssh-keygen -f /usr/share/hassio/share/local-secrets/id_rsa
+ scp /usr/share/hassio/share/local-secrets/id_rsa.pub <target-esxi>:/etc/ssh/keys-root/
+ and then appened to your /etc/ssh/keys-root/authorized_keys
 
  After doing so you should be able to ssh freely using the command
  
@@ -34,7 +34,7 @@
     
     Adjust for what you want the json output file to be called and then execute the script 
 
-    ha_piesxi_temp.sh
+    bash ha_piesxi_temp.sh
  
     it should generate the output file in /usr/share/hassio/share/<youroutput-esxi-name>.json
 
@@ -58,4 +58,11 @@ sensor:
     scan_interval: 70
 
   Verify the configuration in HA ...  Configuration -> Server Controls -> Check configuration ... if ALL OK , then click Restart.
+
+
+4) Crontab the entry 
+
+ as root on your HA system do a crontab -e 
+
+*/1  *  *  *  * bash /usr/share/hassio/share/temp-monitor/ha_piesxi_temp.sh > /usr/share/hassio/share/temp-monitor/ha_piesxi_temp.log 2>&1
 
